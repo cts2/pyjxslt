@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 package org.json;
-import org.pyjxslt.XSLT;
+import org.pyjxslt.XSLTTransformer;
 
 
 import com.google.gson.Gson;
@@ -28,11 +28,11 @@ import com.google.gson.JsonSyntaxException;
  * Re-implementation of an older XMLToJson transformation.  A pass through to the XSLT processor with
  * a prettifyer on thy back end
  */
-public class XMLToJson extends XSLT  {
+public class XMLToJson extends XSLTTransformer  {
 
 	private Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
 	JsonParser jp = new JsonParser();
-    static final String xsltFile = "XMLToJson.xsl";
+    static final String xsltFile = "xsl" + java.io.File.separator + "XMLToJson.xsl";
 	
 	public XMLToJson() {
         super(xsltFile);

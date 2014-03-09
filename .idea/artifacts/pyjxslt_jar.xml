@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="pyjxslt:jar">
+    <output-path>$PROJECT_DIR$/lib</output-path>
+    <root id="root">
+      <element id="archive" name="pyjxslt.jar">
+        <element id="module-output" name="pyjxslt" />
+      </element>
+      <element id="library" level="project" name="py4j0.8.1" />
+      <element id="library" level="project" name="saxon9he" />
+      <element id="library" level="project" name="gson-2.2.4" />
+    </root>
+  </artifact>
+</component>
