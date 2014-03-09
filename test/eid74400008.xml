@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntityDescriptionMsg xmlns="http://www.omg.org/spec/CTS2/1.1/Entity" xmlns:core="http://www.omg.org/spec/CTS2/1.1/Core">
+    <core:heading>
+        <core:resourceRoot>http://localhost:8080/cts2/</core:resourceRoot>
+        <core:resourceURI>http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131/entity/74400008</core:resourceURI>
+        <core:accessDate>2014-03-09T04:26:27Z</core:accessDate>
+    </core:heading>
+    <EntityDescription>
+        <classDescription entryState="ACTIVE" about="http://snomed.info/id/74400008" descriptionState="FULLY_DEFINED">
+            <entityID>
+                <core:namespace>sctid</core:namespace>
+                <core:name>74400008</core:name>
+            </entityID>
+            <describingCodeSystemVersion>
+                <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+                <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+            </describingCodeSystemVersion>
+            <designation assertedInCodeSystemVersion="SNOMED_CT_20140131" externalIdentifier="123558018" designationRole="PREFERRED">
+                <core:value>Appendicitis</core:value>
+                <core:language uri="http://www.omg.org/spec/LNG#en-us">US English</core:language>
+                <caseSignificance href="http://localhost:8080/cts2/entity/sctid:900000000000020002" uri="http://snomed.info/id/900000000000020002">Initial character case insensitive</caseSignificance>
+            </designation>
+            <designation assertedInCodeSystemVersion="SNOMED_CT_20140131" externalIdentifier="123558018" designationRole="PREFERRED">
+                <core:value>Appendicitis</core:value>
+                <core:language uri="http://www.omg.org/spec/LNG#en-gb">GB English</core:language>
+                <caseSignificance href="http://localhost:8080/cts2/entity/sctid:900000000000020002" uri="http://snomed.info/id/900000000000020002">Initial character case insensitive</caseSignificance>
+            </designation>
+            <designation assertedInCodeSystemVersion="SNOMED_CT_20140131" externalIdentifier="814894010" designationRole="ALTERNATIVE">
+                <core:value>Appendicitis (disorder)</core:value>
+                <core:language uri="http://www.omg.org/spec/LNG#en-gb">GB English</core:language>
+                <designationType href="http://localhost:8080/cts2/entity/sctid:900000000000003001" uri="http://snomed.info/id/900000000000003001">Fully specified name</designationType>
+                <caseSignificance href="http://localhost:8080/cts2/entity/sctid:900000000000020002" uri="http://snomed.info/id/900000000000020002">Initial character case insensitive</caseSignificance>
+            </designation>
+            <designation assertedInCodeSystemVersion="SNOMED_CT_20140131" externalIdentifier="814894010" designationRole="ALTERNATIVE">
+                <core:value>Appendicitis (disorder)</core:value>
+                <core:language uri="http://www.omg.org/spec/LNG#en-us">US English</core:language>
+                <designationType href="http://localhost:8080/cts2/entity/sctid:900000000000003001" uri="http://snomed.info/id/900000000000003001">Fully specified name</designationType>
+                <caseSignificance href="http://localhost:8080/cts2/entity/sctid:900000000000020002" uri="http://snomed.info/id/900000000000020002">Initial character case insensitive</caseSignificance>
+            </designation>
+            <property>
+                <core:predicate uri="http://snomed.info/field/definitionStatusId">
+                    <core:namespace>field</core:namespace>
+                    <core:name>definitionStatusId</core:name>
+                </core:predicate>
+                <core:value>
+                    <core:entity href="http://localhost:8080/cts2/entity/sctid:900000000000073002" uri="http://snomed.info/id/900000000000073002">
+                        <core:namespace>sctpn</core:namespace>
+                        <core:name>Defined</core:name>
+                        <core:designation>Sufficiently defined concept definition status (core metadata concept)</core:designation>
+                    </core:entity>
+                </core:value>
+            </property>
+            <subjectOf>http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131/entity/74400008/subjectof</subjectOf>
+            <predicateOf/>
+            <targetOf>http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131/entity/74400008/targetof</targetOf>
+            <parent href="http://localhost:8080/cts2/entity/sctid:64572001" uri="http://snomed.info/id/64572001">
+                <core:namespace>sctpn</core:namespace>
+                <core:name>Disease</core:name>
+                <core:designation>Disease (disorder)</core:designation>
+            </parent>
+            <parents>http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131/entity/74400008/parents</parents>
+            <ancestors>http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131/entity/74400008/ancestors</ancestors>
+            <children/>
+            <descendants/>
+            <entityType uri="http://www.w3.org/2002/07/owl#Class">
+                <core:namespace>owl</core:namespace>
+                <core:name>Class</core:name>
+            </entityType>
+        </classDescription>
+    </EntityDescription>
+</EntityDescriptionMsg>
