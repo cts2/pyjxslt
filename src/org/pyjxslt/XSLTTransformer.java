@@ -53,6 +53,20 @@ public class XSLTTransformer {
     }
 
     /**
+     * Create an instance to do transformations for the supplied XSLT.
+     * @param xsltText - Text to transform
+     * @param isText - used to differentiate signature.
+     */
+    public XSLTTransformer(String xsltText, Boolean isText) {
+        TransformerFactory tFactory = TransformerFactory.newInstance();
+        try {
+            transformer = tFactory.newTransformer(new StreamSource(new StringReader(xsltText)));
+        } catch(TransformerConfigurationException e) {
+            System.err.println("Unable to load transformation: " + xsltText.substring(0, 20) + "...");
+        }
+    }
+
+    /**
      * Determine whether the XSLT is ok and ready to go
      * @return true if ok
      */

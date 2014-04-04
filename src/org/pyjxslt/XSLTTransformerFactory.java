@@ -18,6 +18,8 @@ package org.pyjxslt;
  * limitations under the License.
  */
 
+import net.sf.saxon.functions.True;
+
 import java.util.HashMap;
 
 /**
@@ -26,6 +28,7 @@ import java.util.HashMap;
 public class XSLTTransformerFactory {
     String basePath;
     HashMap<String, XSLTTransformer> transformers = new HashMap<String, XSLTTransformer>();
+    Boolean debug = false;
 
     /**
      * Start a transformer factory using XSLT from the supplied base path
@@ -33,6 +36,13 @@ public class XSLTTransformerFactory {
      */
     public XSLTTransformerFactory(String basePath) {
         this.basePath = basePath;
+    }
+
+    /**
+     * Set debugging mode
+     */
+    public void setDebug(Boolean val) {
+        debug = val;
     }
 
     /**
@@ -49,5 +59,33 @@ public class XSLTTransformerFactory {
                 return null;
         }
         return transformers.get(xsltFileName);
+    }
+
+    /**
+     * Remove a transformer for the supplied key or file name
+     */
+    public Boolean removeTransformer(String key) {
+        if(transformers.containsKey(key)) {
+            transformers.remove(key);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Return a transformer for the supplied key and xslt text
+     * @param key - the identifier of the transformation text
+     * @param xsltText - the text of the transformation
+     * @return corresponding transformer
+     */
+    public XSLTTransformer transformer(String key, String xsltText) {
+        if(!transformers.containsKey(key)) {
+            XSLTTransformer xform = new XSLTTransformer(xsltText, true);
+            if(xform.isOK())
+                transformers.put(key, xform);
+            else
+                return null;
+        }
+        return transformers.get(key);
     }
 }
