@@ -39,7 +39,7 @@ class XSLTGateway(object):
 
         @param port: py4j gateway port (default: 25333)
         """
-        self._gwPort = port
+        self._gwPort = int(port)
         self._converters = {}
         self._xsltLibrary = XSLTLibrary()
         self.reconnect()
@@ -58,7 +58,7 @@ class XSLTGateway(object):
             self._xsltFactory = self._gateway.jvm.org.pyjxslt.XSLTTransformerFactory('')
             self._refreshConverters()
             self._jsonConverter = self._gateway.jvm.org.json.XMLToJson()
-        except socket.error as e:
+        except (socket.error, Py4JNetworkError) as e:
             print e
             self._gateway = None
             return False
@@ -71,6 +71,10 @@ class XSLTGateway(object):
         """
         return self._gateway is not None or (reconnect and self.reconnect())
 
+    def toJSON(self, xml):
+        if self.gatewayConnected():
+            return self._jsonConverter.transform(xml)
+        return None
 
     def addTransform(self, key, xslt):
         """ Add or update a transform.
