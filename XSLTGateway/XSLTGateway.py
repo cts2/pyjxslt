@@ -27,14 +27,14 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import os
 import socket
-from py4j.java_gateway import JavaGateway, GatewayClient, Py4JError, Py4JNetworkError
-from XSLTLibrary import XSLTLibrary
+from py4j.java_gateway import JavaGateway, GatewayClient, Py4JNetworkError
+from .XSLTLibrary import XSLTLibrary
+from functools import reduce
 
 
 class XSLTGateway(object):
-    def __init__(self, port=25333):
+    def __init__(self, port=25333, **_):
         """ Construct a new XSLT gateway.  This uses the py4j gateway to connect to a java server.
 
         @param port: py4j gateway port (default: 25333)
@@ -43,12 +43,15 @@ class XSLTGateway(object):
         self._converters = {}
         self._xsltLibrary = XSLTLibrary()
         self.reconnect()
+        self._xsltFactory = None
+        self._jsonConverter = None
+        self._gateway = None
         
     def reconnect(self):
         """ (Re)establish the gateway connection
         @return: True if connection was established
         """
-        print "Starting Java gateway on port: %s" % self._gwPort
+        print("Starting Java gateway on port: %s" % self._gwPort)
         self._converters.clear()
         self._gateway = None
         self._xsltFactory = None
@@ -56,10 +59,10 @@ class XSLTGateway(object):
         try:
             self._gateway = JavaGateway(GatewayClient(port=self._gwPort))
             self._xsltFactory = self._gateway.jvm.org.pyjxslt.XSLTTransformerFactory('')
-            self._refreshConverters()
+            self._refresh_converters()
             self._jsonConverter = self._gateway.jvm.org.json.XMLToJson()
         except (socket.error, Py4JNetworkError) as e:
-            print e
+            print(e)
             self._gateway = None
             return False
         return True
@@ -83,38 +86,36 @@ class XSLTGateway(object):
         @param xslt: Text or file name of an xslt transform
 
         """
-        self._remConverter(key)
+        self._remove_converter(key)
         self._xsltLibrary[key] = xslt
-        self._addConverter(key)
+        self._add_converter(key)
 
-
-    def _refreshConverters(self):
+    def _refresh_converters(self):
         """ Refresh all of the converters in the py4j library
         @return: True if all converters were succesfully updated
         """
         self._converters.clear()
-        return reduce(lambda a,b: a and b, map(lambda k: self._addConverter(k), self._xsltLibrary.keys()), True)
+        return reduce(lambda a, b: a and b, [self._add_converter(k) for k in list(self._xsltLibrary.keys())], True)
 
-
-    def _addConverter(self, key):
+    def _add_converter(self, key):
         # Do the checkConnected first, as, if the connection is reestablishe
         if self.gatewayConnected(reconnect=False) and key not in self._converters:
             try:
                 self._converters[key] = self._xsltFactory.transformer(key, self._xsltLibrary[key])
                 return True
             except socket.error as e:
-                print e
+                print(e)
                 self._gateway = None
         return False
 
-    def _remConverter(self, key):
+    def _remove_converter(self, key):
         if self.gatewayConnected(reconnect=False) and key in self._converters:
             self._xsltFactory.removeTransformer(key)
             self._converters.pop(key, None)
 
     def _parms(self, **kwargs):
         m = self._gateway.jvm.java.util.HashMap()
-        for k,v in kwargs.items():
+        for k, v in kwargs.items():
             m[k] = v
         return m
 
@@ -129,4 +130,3 @@ class XSLTGateway(object):
         if key in self._xsltLibrary and self.gatewayConnected() and key in self._converters:
             return self._converters[key].transform(xml, self._parms(**kwargs))
         return None
-
