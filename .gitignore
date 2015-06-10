@@ -11,6 +11,7 @@ out
 settings.conf
 settings.cfg
 *.log
+nohup.out
 
 # C extensions
 *.so
