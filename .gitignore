@@ -6,3 +6,45 @@ workspace.xml
 tasks.xml
 .DS_Store
 out
+
+*.py[cod]
+settings.conf
+settings.cfg
+*.log
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+__pycache__
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# PyCharm and Ideaj
+.idea
