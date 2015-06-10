@@ -1,8 +1,0 @@
-<component name="libraryTable">
-  <library name="py4j0.8.1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/py4j0.8.1.jar!/" />
-    </CLASSES>
-    <SOURCES />
-  </library>
-</component>
