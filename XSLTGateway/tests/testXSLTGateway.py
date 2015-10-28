@@ -87,6 +87,7 @@ xml2 = """<?xml version="1.0" encoding="UTF-8"?>
     <entry id='42'>BAR</entry>
 </docx>"""
 
+
 class TestGateway(unittest.TestCase):
     gw = XSLTGateway()
 
@@ -132,7 +133,7 @@ ENTRY: 17:FOO
 ENTRY: 42:BAR""", self.gw.transform('k4', xml1))
 
     def testBadXSL(self):
-        self.assertRaises(ValueError,self.gw.addTransform, *('e1', xsl3))
+        self.assertRaises(ValueError, self.gw.addTransform, *('e1', xsl3))
         self.assertIsNone(self.gw.addTransform('e2', xsl4))
         self.gw.addTransform('e2', xsl2)
         self.assertEqual("""<?xml version="1.0" encoding="UTF-8"?>

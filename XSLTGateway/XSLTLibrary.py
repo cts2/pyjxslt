@@ -29,18 +29,18 @@
 
 import os
 
+
 class XSLTLibrary(dict):
     """ A library of XSLT modules -- either as files or as xslt text.
     """
     @staticmethod
-    def isXSLT(text):
+    def is_xslt(text):
         return text.startswith('<?xml ') and text.strip().endswith('</xsl:stylesheet>')
 
     @staticmethod
-    def isXSLTFile(fname):
+    def is_xslt_file(fname):
         with open(fname) as infile:
-            return XSLTLibrary.isXSLT(infile.read())
-        return false
+            return XSLTLibrary.is_xslt(infile.read())
 
     def __setitem__(self, key, value):
         """
@@ -48,14 +48,14 @@ class XSLTLibrary(dict):
         @param key: value key
         @param value: either a file or a block of xslt
         """
-        if self.isXSLT(value) or os.path.isfile(value):
+        if self.is_xslt(value) or os.path.isfile(value):
             super(XSLTLibrary, self).__setitem__(key, value)
         else:
             raise ValueError("Value for %s is neither XML nor a file" % key)
 
     def __getitem__(self, key):
         val = super(XSLTLibrary, self).__getitem__(key)
-        if self.isXSLT(val):
+        if self.is_xslt(val):
             return val
         with open(val) as f:
             return f.read()

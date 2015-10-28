@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2014, Mayo Clinic
+# Copyright (c) 2015, Mayo Clinic
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification,
@@ -29,7 +29,7 @@
 
 import socket
 from py4j.java_gateway import JavaGateway, GatewayClient, Py4JNetworkError
-from .XSLTLibrary import XSLTLibrary
+from XSLTLibrary import XSLTLibrary
 from functools import reduce
 
 
