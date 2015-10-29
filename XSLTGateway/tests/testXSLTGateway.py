@@ -29,7 +29,7 @@
 
 import unittest
 import os
-from XSLTGateway.XSLTGateway import XSLTGateway
+from XSLTGateway import Gateway
 
 xsl1 = """<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -89,16 +89,16 @@ xml2 = """<?xml version="1.0" encoding="UTF-8"?>
 
 
 class TestGateway(unittest.TestCase):
-    gw = XSLTGateway()
+    gw = Gateway()
 
     def testSimple(self):
-        self.gw.addTransform('k1', xsl1)
+        self.gw.add_transform('k1', xsl1)
         self.assertEqual("""<?xml version="1.0" encoding="UTF-8"?>
 ENTRY: 17:FOO
 ENTRY: 42:BAR""", self.gw.transform('k1', xml1))
 
     def testParms(self):
-        self.gw.addTransform('k2', xsl2)
+        self.gw.add_transform('k2', xsl2)
         self.assertEqual("""<?xml version="1.0" encoding="UTF-8"?>
 Parm1: DEVEL
 Parm2: 42
@@ -111,21 +111,21 @@ ENTRY: 17:FOO
 ENTRY: 42:BAR""", self.gw.transform('k2', xml1, p2=42, p1="PROD"))
 
     def testFile(self):
-        self.gw.addTransform('k3', os.path.join('data', 'file3.xsl'))
+        self.gw.add_transform('k3', os.path.join('data', 'file3.xsl'))
         self.assertEqual("""<?xml version="1.0" encoding="UTF-8"?>
 ENTRY: 17:FOO
 ENTRY: 42:BAR""", self.gw.transform('k3', xml1))
-        self.gw.addTransform('k3', os.path.join('data', 'file3a.xsl'))
+        self.gw.add_transform('k3', os.path.join('data', 'file3a.xsl'))
         self.assertEqual("""<?xml version="1.0" encoding="UTF-8"?>
 entry: 17:FOO
 entry: 42:BAR""", self.gw.transform('k3', xml1))
 
     def testReplace(self):
-        self.gw.addTransform('k4', xsl1)
+        self.gw.add_transform('k4', xsl1)
         self.assertEqual("""<?xml version="1.0" encoding="UTF-8"?>
 ENTRY: 17:FOO
 ENTRY: 42:BAR""", self.gw.transform('k4', xml1))
-        self.gw.addTransform('k4', xsl2)
+        self.gw.add_transform('k4', xsl2)
         self.assertEqual("""<?xml version="1.0" encoding="UTF-8"?>
 Parm1: DEVEL
 Parm2: 17
@@ -133,9 +133,9 @@ ENTRY: 17:FOO
 ENTRY: 42:BAR""", self.gw.transform('k4', xml1))
 
     def testBadXSL(self):
-        self.assertRaises(ValueError, self.gw.addTransform, *('e1', xsl3))
-        self.assertIsNone(self.gw.addTransform('e2', xsl4))
-        self.gw.addTransform('e2', xsl2)
+        self.assertRaises(ValueError, self.gw.add_transform, *('e1', xsl3))
+        self.assertIsNone(self.gw.add_transform('e2', xsl4))
+        self.gw.add_transform('e2', xsl2)
         self.assertEqual("""<?xml version="1.0" encoding="UTF-8"?>
 Parm1: DEVEL
 Parm2: 17
@@ -143,8 +143,8 @@ ENTRY: 17:FOO
 ENTRY: 42:BAR""", self.gw.transform('e2', xml1))
 
     def testBadXML(self):
-        self.gw.addTransform('k1', xsl1)
-        self.assertTrue(self.gw.transform('k1',xml2).startswith('Transformer exception: org.xml.sax.SAXParseException;'))
+        self.gw.add_transform('k1', xsl1)
+        self.assertTrue(self.gw.transform('k1', xml2).startswith('Transformer exception: org.xml.sax.SAXParseException;'))
 
 if __name__ == '__main__':
     unittest.main()

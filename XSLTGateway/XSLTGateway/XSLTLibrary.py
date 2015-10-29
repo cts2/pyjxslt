@@ -51,7 +51,7 @@ class XSLTLibrary(dict):
         if self.is_xslt(value) or os.path.isfile(value):
             super(XSLTLibrary, self).__setitem__(key, value)
         else:
-            raise ValueError("Value for %s is neither XML nor a file" % key)
+            raise ValueError("'%s' is neither XSLT nor the name of a file" % key)
 
     def __getitem__(self, key):
         val = super(XSLTLibrary, self).__getitem__(key)

@@ -28,12 +28,13 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import socket
-from py4j.java_gateway import JavaGateway, GatewayClient, Py4JNetworkError
-from XSLTLibrary import XSLTLibrary
 from functools import reduce
 
+from py4j.java_gateway import JavaGateway, GatewayClient, Py4JNetworkError
+from XSLTGateway.XSLTLibrary import XSLTLibrary
 
-class XSLTGateway(object):
+
+class Gateway(object):
     def __init__(self, port=25333, **_):
         """ Construct a new XSLT gateway.  This uses the py4j gateway to connect to a java server.
 
@@ -51,12 +52,12 @@ class XSLTGateway(object):
         """ (Re)establish the gateway connection
         @return: True if connection was established
         """
-        print("Starting Java gateway on port: %s" % self._gwPort)
         self._converters.clear()
         self._gateway = None
         self._xsltFactory = None
         self._jsonConverter = None
         try:
+            print("Starting Java gateway on port: %s" % self._gwPort)
             self._gateway = JavaGateway(GatewayClient(port=self._gwPort))
             self._xsltFactory = self._gateway.jvm.org.pyjxslt.XSLTTransformerFactory('')
             self._refresh_converters()
@@ -67,19 +68,19 @@ class XSLTGateway(object):
             return False
         return True
     
-    def gatewayConnected(self, reconnect=True):
+    def gateway_connected(self, reconnect=True):
         """ Determine whether the gateway is connected
         @param reconnect: True means try to reconnect if not connected
         @return: True if the gateway is active
         """
         return self._gateway is not None or (reconnect and self.reconnect())
 
-    def toJSON(self, xml):
-        if self.gatewayConnected():
+    def to_json(self, xml):
+        if self.gateway_connected():
             return self._jsonConverter.transform(xml)
         return None
 
-    def addTransform(self, key, xslt):
+    def add_transform(self, key, xslt):
         """ Add or update a transform.
 
         @param key: Transform key to use when executing transformations
@@ -99,7 +100,7 @@ class XSLTGateway(object):
 
     def _add_converter(self, key):
         # Do the checkConnected first, as, if the connection is reestablishe
-        if self.gatewayConnected(reconnect=False) and key not in self._converters:
+        if self.gateway_connected(reconnect=False) and key not in self._converters:
             try:
                 self._converters[key] = self._xsltFactory.transformer(key, self._xsltLibrary[key])
                 return True
@@ -109,7 +110,7 @@ class XSLTGateway(object):
         return False
 
     def _remove_converter(self, key):
-        if self.gatewayConnected(reconnect=False) and key in self._converters:
+        if self.gateway_connected(reconnect=False) and key in self._converters:
             self._xsltFactory.removeTransformer(key)
             self._converters.pop(key, None)
 
@@ -127,6 +128,6 @@ class XSLTGateway(object):
         @param kwargs: XSLT parameters
         @return: Transform output or None if transform failed
         """
-        if key in self._xsltLibrary and self.gatewayConnected() and key in self._converters:
+        if key in self._xsltLibrary and self.gateway_connected() and key in self._converters:
             return self._converters[key].transform(xml, self._parms(**kwargs))
         return None
