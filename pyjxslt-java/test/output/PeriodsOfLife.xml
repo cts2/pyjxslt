@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssociationGraph xmlns="http://www.omg.org/spec/CTS2/1.1/Association" complete="COMPLETE" numEntries="14" graphFocus="SPECIFIC_ENTITY" xmlns:core="http://www.omg.org/spec/CTS2/1.1/Core" expansionDirection="REVERSE">
+    <core:heading>
+        <core:resourceRoot>http://localhost:8080/cts2/</core:resourceRoot>
+        <core:resourceURI>http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131/entity/282032007/descendants/graph</core:resourceURI>
+        <core:accessDate>2014-03-09T04:33:37Z</core:accessDate>
+    </core:heading>
+    <focusEntity href="http://localhost:8080/cts2/entity/sctid:282032007" uri="http://snomed.info/id/282032007">
+        <core:namespace>sctid</core:namespace>
+        <core:name>282032007</core:name>
+        <core:designation>Periods of life (qualifier value)</core:designation>
+    </focusEntity>
+    <entry direction="TARGET_TO_SOURCE" derivation="ASSERTED" associationID="http://snomed.info/associd/1" nextNodeNumber="2" depth="1" nodeNumber="1">
+        <subject href="http://localhost:8080/cts2/entity/sctid:3658006" uri="http://snomed.info/id/3658006">
+            <core:namespace>sctid</core:namespace>
+            <core:name>3658006</core:name>
+            <core:designation>Infancy (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:282032007" uri="http://snomed.info/id/282032007">
+                <core:namespace>sctid</core:namespace>
+                <core:name>282032007</core:name>
+                <core:designation>Periods of life (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry direction="TARGET_TO_SOURCE" derivation="ASSERTED" associationID="http://snomed.info/associd/1" nextNodeNumber="3" depth="2" nodeNumber="2">
+        <subject href="http://localhost:8080/cts2/entity/sctid:255407002" uri="http://snomed.info/id/255407002">
+            <core:namespace>sctid</core:namespace>
+            <core:name>255407002</core:name>
+            <core:designation>Neonatal (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:3658006" uri="http://snomed.info/id/3658006">
+                <core:namespace>sctid</core:namespace>
+                <core:name>3658006</core:name>
+                <core:designation>Infancy (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry depth="3" associationID="http://snomed.info/associd/1" direction="TARGET_TO_SOURCE" derivation="ASSERTED" nodeNumber="3">
+        <subject href="http://localhost:8080/cts2/entity/sctid:303114002" uri="http://snomed.info/id/303114002">
+            <core:namespace>sctid</core:namespace>
+            <core:name>303114002</core:name>
+            <core:designation>Early neonatal period (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:255407002" uri="http://snomed.info/id/255407002">
+                <core:namespace>sctid</core:namespace>
+                <core:name>255407002</core:name>
+                <core:designation>Neonatal (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry depth="3" associationID="http://snomed.info/associd/1" direction="TARGET_TO_SOURCE" derivation="ASSERTED" nodeNumber="4">
+        <subject href="http://localhost:8080/cts2/entity/sctid:303115001" uri="http://snomed.info/id/303115001">
+            <core:namespace>sctid</core:namespace>
+            <core:name>303115001</core:name>
+            <core:designation>Late neonatal period (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:255407002" uri="http://snomed.info/id/255407002">
+                <core:namespace>sctid</core:namespace>
+                <core:name>255407002</core:name>
+                <core:designation>Neonatal (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry depth="1" associationID="http://snomed.info/associd/1" direction="TARGET_TO_SOURCE" derivation="ASSERTED" nodeNumber="5">
+        <subject href="http://localhost:8080/cts2/entity/sctid:41847000" uri="http://snomed.info/id/41847000">
+            <core:namespace>sctid</core:namespace>
+            <core:name>41847000</core:name>
+            <core:designation>Adulthood (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:282032007" uri="http://snomed.info/id/282032007">
+                <core:namespace>sctid</core:namespace>
+                <core:name>282032007</core:name>
+                <core:designation>Periods of life (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry depth="1" associationID="http://snomed.info/associd/1" direction="TARGET_TO_SOURCE" derivation="ASSERTED" nodeNumber="6">
+        <subject href="http://localhost:8080/cts2/entity/sctid:255398004" uri="http://snomed.info/id/255398004">
+            <core:namespace>sctid</core:namespace>
+            <core:name>255398004</core:name>
+            <core:designation>Childhood (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:282032007" uri="http://snomed.info/id/282032007">
+                <core:namespace>sctid</core:namespace>
+                <core:name>282032007</core:name>
+                <core:designation>Periods of life (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry depth="1" associationID="http://snomed.info/associd/1" direction="TARGET_TO_SOURCE" derivation="ASSERTED" nodeNumber="7">
+        <subject href="http://localhost:8080/cts2/entity/sctid:255399007" uri="http://snomed.info/id/255399007">
+            <core:namespace>sctid</core:namespace>
+            <core:name>255399007</core:name>
+            <core:designation>Congenital (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:282032007" uri="http://snomed.info/id/282032007">
+                <core:namespace>sctid</core:namespace>
+                <core:name>282032007</core:name>
+                <core:designation>Periods of life (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry depth="1" associationID="http://snomed.info/associd/1" direction="TARGET_TO_SOURCE" derivation="ASSERTED" nodeNumber="8">
+        <subject href="http://localhost:8080/cts2/entity/sctid:263659003" uri="http://snomed.info/id/263659003">
+            <core:namespace>sctid</core:namespace>
+            <core:name>263659003</core:name>
+            <core:designation>Adolescence (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:282032007" uri="http://snomed.info/id/282032007">
+                <core:namespace>sctid</core:namespace>
+                <core:name>282032007</core:name>
+                <core:designation>Periods of life (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry depth="1" associationID="http://snomed.info/associd/1" direction="TARGET_TO_SOURCE" derivation="ASSERTED" nodeNumber="9">
+        <subject href="http://localhost:8080/cts2/entity/sctid:271872005" uri="http://snomed.info/id/271872005">
+            <core:namespace>sctid</core:namespace>
+            <core:name>271872005</core:name>
+            <core:designation>Old age (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:282032007" uri="http://snomed.info/id/282032007">
+                <core:namespace>sctid</core:namespace>
+                <core:name>282032007</core:name>
+                <core:designation>Periods of life (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry depth="1" associationID="http://snomed.info/associd/1" direction="TARGET_TO_SOURCE" derivation="ASSERTED" nodeNumber="10">
+        <subject href="http://localhost:8080/cts2/entity/sctid:303113008" uri="http://snomed.info/id/303113008">
+            <core:namespace>sctid</core:namespace>
+            <core:name>303113008</core:name>
+            <core:designation>Postmortem period (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:282032007" uri="http://snomed.info/id/282032007">
+                <core:namespace>sctid</core:namespace>
+                <core:name>282032007</core:name>
+                <core:designation>Periods of life (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry direction="TARGET_TO_SOURCE" derivation="ASSERTED" associationID="http://snomed.info/associd/1" nextNodeNumber="12" depth="1" nodeNumber="11">
+        <subject href="http://localhost:8080/cts2/entity/sctid:450426006" uri="http://snomed.info/id/450426006">
+            <core:namespace>sctid</core:namespace>
+            <core:name>450426006</core:name>
+            <core:designation>Fetal or neonatal period (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:282032007" uri="http://snomed.info/id/282032007">
+                <core:namespace>sctid</core:namespace>
+                <core:name>282032007</core:name>
+                <core:designation>Periods of life (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry direction="TARGET_TO_SOURCE" derivation="ASSERTED" associationID="http://snomed.info/associd/1" nextNodeNumber="3" depth="2" nodeNumber="12">
+        <subject href="http://localhost:8080/cts2/entity/sctid:255407002" uri="http://snomed.info/id/255407002">
+            <core:namespace>sctid</core:namespace>
+            <core:name>255407002</core:name>
+            <core:designation>Neonatal (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:450426006" uri="http://snomed.info/id/450426006">
+                <core:namespace>sctid</core:namespace>
+                <core:name>450426006</core:name>
+                <core:designation>Fetal or neonatal period (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry depth="2" associationID="http://snomed.info/associd/1" direction="TARGET_TO_SOURCE" derivation="ASSERTED" nodeNumber="13">
+        <subject href="http://localhost:8080/cts2/entity/sctid:303112003" uri="http://snomed.info/id/303112003">
+            <core:namespace>sctid</core:namespace>
+            <core:name>303112003</core:name>
+            <core:designation>Fetal period (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:450426006" uri="http://snomed.info/id/450426006">
+                <core:namespace>sctid</core:namespace>
+                <core:name>450426006</core:name>
+                <core:designation>Fetal or neonatal period (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+    <entry depth="2" associationID="http://snomed.info/associd/1" direction="TARGET_TO_SOURCE" derivation="ASSERTED" nodeNumber="14">
+        <subject href="http://localhost:8080/cts2/entity/sctid:371578004" uri="http://snomed.info/id/371578004">
+            <core:namespace>sctid</core:namespace>
+            <core:name>371578004</core:name>
+            <core:designation>Perinatal period (qualifier value)</core:designation>
+        </subject>
+        <predicate uri="http://www.w3.org/2000/01/rdf-schema#subClassOf">
+            <core:namespace>rdfs</core:namespace>
+            <core:name>subClassOf</core:name>
+        </predicate>
+        <target>
+            <core:entity href="http://localhost:8080/cts2/entity/sctid:450426006" uri="http://snomed.info/id/450426006">
+                <core:namespace>sctid</core:namespace>
+                <core:name>450426006</core:name>
+                <core:designation>Fetal or neonatal period (qualifier value)</core:designation>
+            </core:entity>
+        </target>
+        <assertedBy>
+            <core:version href="http://localhost:8080/cts2/codesystem/SNOMED_CT/version/20140131" uri="http://snomed.info/sct/900000000000207008/version/20140131">SNOMED_CT_20140131</core:version>
+            <core:codeSystem href="http://localhost:8080/cts2/codesystem/SNOMED_CT" uri="http://snomed.info/sct/900000000000207008">SNOMED_CT</core:codeSystem>
+        </assertedBy>
+    </entry>
+</AssociationGraph>
