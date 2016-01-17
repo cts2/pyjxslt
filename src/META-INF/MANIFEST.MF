@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: py4j0.8.1.jar saxon9he.jar gson-2.2.4.jar
-Main-Class: org.pyjxslt.StartGateway
-

@@ -7,6 +7,9 @@ tasks.xml
 .DS_Store
 out
 
+# Mac
+.DS_Store
+
 *.py[cod]
 settings.conf
 settings.cfg

@@ -1,7 +1,7 @@
 pyjxslt
-=======
+=====
 
-A Java gateway for doing XSLT Transforms from Python.
+A Java gateway for doing XSLT 2.0 Transforms from Python. 
 
 Introduction
 ------------
@@ -12,12 +12,33 @@ using the latest Saxon transformation engine.  It also carries built in support 
 This package takes advantage of the [py4j](http://py4j.sourceforge.net/ Python to Java)
 library and uses the [Saxon Transformation Engine](http://saxon.sourceforge.net/).
 
+Dependencies
+-----------
+This package requires the presence of Java runtime.  It is currently compiled to work with version 1.7.
+
+Installation
+------------
+**Using pypi**
+^^^^^^^^^^
+
+* ```> pip install pyjxslt```
+
+**Installing from git**
+
+* ```> git clone https://github.com/CTS2/pyjxslt.git```
+* ```> cd pyjxslt/pyjxslt-python```
+* ```> python setup.py install```
+
 Use
 --------
-Clone this package and execute "run.sh" in the root directory.  This will fire up the py4j listener on port 25333.  You can
-also change the port number by supplying as an argument to the run command.
+Once installed, you need to start up the ```pyjxslt``` server.
 
-There is an example of the basic usage in the [examples] directory.
+* ```> pyjxslt [port number]```
+
+```Gateway Server Started on [port]```
+
+Operation can be tested by:
+* ```testgateway [port number]```
 
 
 
