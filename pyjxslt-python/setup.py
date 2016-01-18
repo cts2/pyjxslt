@@ -12,7 +12,7 @@ setup(
     name='pyjxslt',
     packages=['pyjxslt'],
     package_dir={'pyjxslt': 'src/pyjxslt'},
-    version='1.0.9',
+    version='1.0.10',
     url='http://github.com/CTS2/pyjxslt',
     license='BSD License',
     author='Harold Solbrig',
@@ -21,7 +21,7 @@ setup(
     long_description='Interface package between native python and the Saxon XSLT 2.0 process, which is'
                      ' java based.  This package requires Java 1.7.',
     install_requires=["py4j >=0.9"],
-    scripts=['scripts/pyjxslt'],
+    scripts=['scripts/pyjxslt', 'scripts/testgateway'],
     zip_safe=True,
     include_package_data=True,
     data_files=[('share/pyjxslt', jarfiles),

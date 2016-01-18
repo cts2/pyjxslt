@@ -30,7 +30,7 @@
 import unittest
 import os
 
-from XSLTLibrary import XSLTLibrary
+import pyjxslt
 
 testXSLT = """<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -46,26 +46,26 @@ testNonXSLT = """<?xml ... >"""
 
 class TestLibrary(unittest.TestCase):
     def testText(self):
-        lib = XSLTLibrary()
+        lib = pyjxslt.XSLTLibrary()
         lib['k1'] = testXSLT
         self.assertEqual(lib['k1'], testXSLT)
 
     def testNonXSLT(self):
-        lib = XSLTLibrary()
+        lib = pyjxslt.XSLTLibrary()
         self.assertRaises(ValueError, lib.__setitem__, *('k2', testNonXSLT))
 
     def testFile(self):
-        lib = XSLTLibrary()
+        lib = pyjxslt.XSLTLibrary()
         lib['k3'] = os.path.join('data', 'file1.xslt')
         with open(os.path.join('data', 'file1.xslt')) as f:
             self.assertEqual(f.read(), lib['k3'])
 
     def testNoFile(self):
-        lib = XSLTLibrary()
+        lib = pyjxslt.XSLTLibrary()
         self.assertRaises(ValueError, lib.__setitem__, *('k4', 'nofile.xslt'))
 
     def testNonXSLTFile(self):
-        lib = XSLTLibrary()
+        lib = pyjxslt.XSLTLibrary()
         self.assertRaises(ValueError, lib.__setitem__, *('k4', 'file2.txt'))
 
 

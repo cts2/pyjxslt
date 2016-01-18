@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # -*- coding: utf-8 -*-
 # Copyright (c) 2016, Mayo Clinic
 # All rights reserved.
@@ -29,7 +31,7 @@
 import sys
 import random
 
-from XSLTGateway import Gateway, DEFAULT_PORT
+import pyjxslt
 
 gw_key = "_k" + str(random.randint(10000, 19999))
 
@@ -76,7 +78,7 @@ def test_result(expected, actual):
 
 
 def main(argv):
-    gw = Gateway(int(argv[0] if argv else DEFAULT_PORT))
+    gw = pyjxslt.Gateway(int(argv[0] if argv else pyjxslt.DEFAULT_PORT))
 
     print("\tTesting add and process transformation...", end='')
     gw.add_transform(gw_key, xsl1)

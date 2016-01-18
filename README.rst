@@ -40,6 +40,43 @@ Once installed, you need to start up the ```pyjxslt``` server.
 Operation can be tested by:
 * ```testgateway [port number]```
 
+```
+Starting Java gateway on port: 25333
+	Testing add and process transformation...Starting Java gateway on port: 25333
+success!
+	Testing XML to JSON transform...success!
+```
+
+Using pyjxslt as an XSLT transformer
+------------
+```code-block:: python
+import pyjxslt
+
+gw = pyjxslt.Gateway([port #])
+# Add an xslt transformation.  
+#       First parameter is the name of the transformation
+# 	    Second parameter is either XSLT text or the name of a file that contains XSLT text
+gw.add_transform('k1', xslt_text)
+# Do a transformation
+#       First parameter is the name of the xslt transformation (cached on server)
+#       Second parameter is either XML text or the name of a file that contains XML text
+#       Third parameter is dictionary of parameters to pass to XSLT Transformer
+result = gw.transform('k1', xml_text, [parms_dict])
+	...
+# Remove the transformation when you are done with it or need to replace
+# it with a new one
+gw.remove_transform('k1')
+``` 
+
+Using pyjxslt as an XML to JSON converter
+------------
+``` code-block:: python
+import pyjxslt
+
+gw = pyjxslt.Gateway([port #])
+json = gw.to_json(xml_text)
+```
+
 
 
 

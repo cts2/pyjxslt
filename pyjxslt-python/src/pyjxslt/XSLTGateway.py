@@ -31,7 +31,8 @@ import socket
 from functools import reduce
 
 from py4j.java_gateway import JavaGateway, GatewayClient, Py4JNetworkError
-from XSLTLibrary import XSLTLibrary
+
+from .XSLTLibrary import XSLTLibrary
 
 DEFAULT_PORT = 25333
 

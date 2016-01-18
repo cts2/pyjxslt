@@ -29,7 +29,7 @@
 
 import unittest
 import os
-from XSLTGateway import Gateway
+import pyjxslt
 
 xsl1 = """<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -89,7 +89,7 @@ xml2 = """<?xml version="1.0" encoding="UTF-8"?>
 
 
 class TestGateway(unittest.TestCase):
-    gw = Gateway()
+    gw = pyjxslt.Gateway()
 
     def testSimple(self):
         self.gw.add_transform('k1', xsl1)
@@ -144,7 +144,8 @@ ENTRY: 42:BAR""", self.gw.transform('e2', xml1))
 
     def testBadXML(self):
         self.gw.add_transform('k1', xsl1)
-        self.assertTrue(self.gw.transform('k1', xml2).startswith('Transformer exception: org.xml.sax.SAXParseException;'))
+        self.assertTrue(self.gw.transform('k1', xml2)
+                        .startswith('Transformer exception: org.xml.sax.SAXParseException;'))
 
 if __name__ == '__main__':
     unittest.main()
