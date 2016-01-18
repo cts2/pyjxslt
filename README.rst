@@ -5,12 +5,12 @@ A Java gateway for doing XSLT 2.0 Transforms from Python.
 
 Introduction
 ------------
-Python still doesn't support [XSLT 2.0](http://www.w3.org/TR/xslt20/). This package exists as a work-around, by allowing transformations to be done
-using the latest Saxon transformation engine.  It also carries built in support for the [Object Management Group (OMG)'s](http://www.omg.org/).
- [XML to JSON conversion standard](http://www.omg.org/cgi-bin/doc?ad/13-09-04).
+Python still doesn't support `XSLT 2.0 <http://www.w3.org/TR/xslt20/>`_ This package exists as a work-around, by allowing transformations to be done
+using the latest Saxon transformation engine.  It also carries built in support for the `Object Management Group (OMG)'s <http://www.omg.org/)`_. 
+ `XML to JSON conversion standard <http://www.omg.org/cgi-bin/doc?ad/13-09-04>`_.
 
-This package takes advantage of the [py4j](http://py4j.sourceforge.net/ Python to Java)
-library and uses the [Saxon Transformation Engine](http://saxon.sourceforge.net/).
+This package takes advantage of the `py4j <http://py4j.sourceforge.net/ Python to Java>`_
+library and uses the `Saxon Transformation Engine<http://saxon.sourceforge.net/>`_
 
 Dependencies
 -----------
@@ -76,7 +76,6 @@ import pyjxslt
 gw = pyjxslt.Gateway([port #])
 json = gw.to_json(xml_text)
 ```
-
 
 
 
