@@ -18,7 +18,7 @@ This package requires the presence of Java runtime.  It is currently compiled to
 Installation
 ------------
 **Using pypi**
-^^^^^^^^^^
+
 
 	> pip install pyjxslt
 
