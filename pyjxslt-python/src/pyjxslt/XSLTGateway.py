@@ -26,7 +26,8 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
-
+import os
+import json
 import socket
 from functools import reduce
 
@@ -35,6 +36,7 @@ from py4j.java_gateway import JavaGateway, GatewayClient, Py4JNetworkError
 from .XSLTLibrary import XSLTLibrary
 
 DEFAULT_PORT = 25333
+XML_TO_JSON_KEY = 'A69F49B0-2C34-4762-A27C-081B5FD4FF35'        # A safe key for the XML to JSON XSLT transformation
 
 
 class Gateway(object):
@@ -46,11 +48,11 @@ class Gateway(object):
         self._gwPort = int(port)
         self._converters = {}
         self._xsltLibrary = XSLTLibrary()
-        self.reconnect()
         self._xsltFactory = None
-        self._jsonConverter = None
         self._gateway = None
-        
+        self._add_json_xslt()
+        self.reconnect()
+
     def reconnect(self):
         """ (Re)establish the gateway connection
         @return: True if connection was established
@@ -58,13 +60,11 @@ class Gateway(object):
         self._converters.clear()
         self._gateway = None
         self._xsltFactory = None
-        self._jsonConverter = None
         try:
             print("Starting Java gateway on port: %s" % self._gwPort)
             self._gateway = JavaGateway(GatewayClient(port=self._gwPort))
             self._xsltFactory = self._gateway.jvm.org.pyjxslt.XSLTTransformerFactory('')
             self._refresh_converters()
-            self._jsonConverter = self._gateway.jvm.org.json.XMLToJson()
         except (socket.error, Py4JNetworkError) as e:
             print(e)
             self._gateway = None
@@ -79,9 +79,12 @@ class Gateway(object):
         return self._gateway is not None or (reconnect and self.reconnect())
 
     def to_json(self, xml):
-        if self.gateway_connected():
-            return self._jsonConverter.transform(xml)
-        return None
+        ugly_json = self.transform(XML_TO_JSON_KEY, xml)
+        try:
+            rval = json.dumps(json.loads(ugly_json), indent=4)
+        except json.JSONDecodeError:
+            rval = ugly_json
+        return rval
 
     def add_transform(self, key, xslt):
         """ Add or update a transform.
@@ -97,6 +100,10 @@ class Gateway(object):
     def drop_transform(self, key):
         self._remove_converter(key)
 
+    def _add_json_xslt(self):
+        self.add_transform(XML_TO_JSON_KEY,
+                           os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), 'xsl', 'XMLToJson.xsl'))
+
     def _refresh_converters(self):
         """ Refresh all of the converters in the py4j library
         @return: True if all converters were succesfully updated
@@ -105,7 +112,7 @@ class Gateway(object):
         return reduce(lambda a, b: a and b, [self._add_converter(k) for k in list(self._xsltLibrary.keys())], True)
 
     def _add_converter(self, key):
-        # Do the checkConnected first, as, if the connection is reestablishe
+        # Do the checkConnected first, as, if the connection is isn't reestablished not much we can do
         if self.gateway_connected(reconnect=False) and key not in self._converters:
             try:
                 self._converters[key] = self._xsltFactory.transformer(key, self._xsltLibrary[key])

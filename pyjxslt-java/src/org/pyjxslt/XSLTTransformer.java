@@ -82,12 +82,12 @@ public class XSLTTransformer {
     public String transform(String xml) {
         StringWriter xformOut = new StringWriter();
         if(transformer==null)
-            return "Missing transformer: " + transformerURL;
+            return "ERROR: Missing transformer: " + transformerURL;
         try {
             transformer.transform(new StreamSource(new StringReader(xml)),
                     new StreamResult(xformOut));
         } catch (TransformerException e) {
-            return "Transformer exception: " + e.getLocalizedMessage();
+            return "ERROR: Transformer exception: " + e.getLocalizedMessage();
         }
         return prettify(xformOut.toString());
     }

@@ -6,13 +6,14 @@ except ImportError:
 
 # This fails on the actual setup for some unknown reason.  We're going brute force for the moment...
 # jarfiles = [f for f in resource_listdir(__name__, 'lib')]
-jarfiles = ['lib/gson-2.5.jar', 'lib/py4j-0.9.jar', 'lib/pyjxslt.jar', 'lib/Saxon-HE-9.7.0-1.jar']
+jarfiles = ['lib/py4j-0.9.jar', 'lib/pyjxslt.jar', 'lib/Saxon-HE-9.7.0-1.jar']
 
 setup(
     name='pyjxslt',
     packages=['pyjxslt'],
     package_dir={'pyjxslt': 'src/pyjxslt'},
-    version='1.0.10',
+    package_data={'pyjxslt': ['xsl/*.xsl']},
+    version='0.6.1',
     url='http://github.com/CTS2/pyjxslt',
     license='BSD License',
     author='Harold Solbrig',
@@ -24,8 +25,7 @@ setup(
     scripts=['scripts/pyjxslt', 'scripts/testgateway'],
     zip_safe=True,
     include_package_data=True,
-    data_files=[('share/pyjxslt', jarfiles),
-                ('share/pyjxslt/xsl', ['static/xsl/XMLTojson.xsl'])],
+    data_files=[('share/pyjxslt', jarfiles)],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',

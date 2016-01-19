@@ -1,7 +1,5 @@
 package org.pyjxslt;
-import org.apache.commons.cli.Options;
 import py4j.GatewayServer;
-
 
 public class StartGateway {
 	/**
@@ -10,8 +8,6 @@ public class StartGateway {
 	 */
 	public static void main(String[] args) {
 		GatewayServer gatewayServer;
-
-		Options options = new Options();
 		
 		int port = 0;
 		if(args.length == 1) {
@@ -36,7 +32,7 @@ public class StartGateway {
 		if(port > 0) {
 			System.out.println("port " + port);
 		} else {
-			System.out.println("default port");
+			System.out.println("default port (25333)");
 		}
 	}
 }

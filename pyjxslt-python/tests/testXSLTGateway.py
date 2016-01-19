@@ -145,7 +145,7 @@ ENTRY: 42:BAR""", self.gw.transform('e2', xml1))
     def testBadXML(self):
         self.gw.add_transform('k1', xsl1)
         self.assertTrue(self.gw.transform('k1', xml2)
-                        .startswith('Transformer exception: org.xml.sax.SAXParseException;'))
+                        .startswith('ERROR:'))
 
 if __name__ == '__main__':
     unittest.main()
