@@ -13,7 +13,7 @@ setup(
     packages=['pyjxslt'],
     package_dir={'pyjxslt': 'src/pyjxslt'},
     package_data={'pyjxslt': ['xsl/*.xsl']},
-    version='0.6.1',
+    version='0.6.3',
     url='http://github.com/CTS2/pyjxslt',
     license='BSD License',
     author='Harold Solbrig',
