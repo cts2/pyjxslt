@@ -29,6 +29,8 @@
 
 import unittest
 import pyjxslt
+from dict_compare import dict_compare
+import json
 
 xml1 = """<?xml version="1.0" encoding="UTF-8"?>
 <doc>
@@ -40,12 +42,12 @@ expected_json = """{
     "doc": {
         "entry": [
             {
-                "id": "17",
-                "_content": "FOO"
+                "_content": "FOO",
+                "id": "17"
             },
             {
-                "id": "42",
-                "_content": "BAR"
+                "_content": "BAR",
+                "id": "42"
             }
         ]
     }
@@ -57,7 +59,15 @@ bad_xml = """<?xml version="1.0" encoding="UTF-8"?>
     <entry id='42'>BAR</entry>
 </dod>"""
 
-expected_bad = 'Transformer exception: org.xml.sax.SAXParseException; lineNumber: 5; columnNumber: 3; ' \
+xml_with_processing_instruction = """<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./datadict_v2.xsl"?>
+<data_table id="pht003897.v1" study_id="phs000722.v1" participant_set="1">
+</data_table>"""
+
+expected_pi = '{ "data_table": { "id": "pht003897.v1", "study_id": "phs000722.v1", "participant_set": "1" } }'
+
+
+expected_bad = 'ERROR: Transformer exception: org.xml.sax.SAXParseException; lineNumber: 5; columnNumber: 3; ' \
                'The element type "doc" must be terminated by the matching end-tag "</doc>".'
 
 
@@ -66,9 +76,22 @@ class XMLToJsonTextCase(unittest.TestCase):
     # that we get what we expect through the gateway
     gw = pyjxslt.Gateway()
 
+    def compare_jsons(self, json1, json2):
+        json1d = json.loads(json1)
+        try:
+            json2d = json.loads(json2)
+        except json.JSONDecodeError as e:
+            print(str(e))
+            return False
+        success, txt = dict_compare(json1d, json2d)
+        if not success:
+            print(txt)
+        return success
+
     def test1(self):
-        self.assertEqual(expected_json, self.gw.to_json(xml1))
+        self.assertTrue(self.compare_jsons(expected_json, self.gw.to_json(xml1)))
         self.assertEqual(expected_bad, self.gw.to_json(bad_xml))
+        self.assertTrue(self.compare_jsons(expected_pi, self.gw.to_json(xml_with_processing_instruction)))
 
 if __name__ == '__main__':
     unittest.main()

@@ -61,7 +61,7 @@ class Gateway(object):
         self._gateway = None
         self._xsltFactory = None
         try:
-            print("Starting Java gateway on port: %s" % self._gwPort)
+            # print("Starting Java gateway on port: %s" % self._gwPort)
             self._gateway = JavaGateway(GatewayClient(port=self._gwPort))
             self._xsltFactory = self._gateway.jvm.org.pyjxslt.XSLTTransformerFactory('')
             self._refresh_converters()

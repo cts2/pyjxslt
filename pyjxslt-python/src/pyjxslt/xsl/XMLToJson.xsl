@@ -74,7 +74,7 @@
 
             <xsl:otherwise>
                 <!-- Positioned on a normal element -->
-                <xsl:if test="position() > 1">, </xsl:if>
+                <xsl:if test="position() - count(preceding-sibling::comment()) - count(preceding-sibling::processing-instruction()) > 1">, </xsl:if>
 
                 <!-- If not inside a repeating group, generate name/value -->
                 <xsl:if test="not($inList)">
