@@ -80,10 +80,13 @@ class Gateway(object):
 
     def to_json(self, xml):
         ugly_json = self.transform(XML_TO_JSON_KEY, xml)
-        try:
-            rval = json.dumps(json.loads(ugly_json), indent=4)
-        except json.JSONDecodeError:
-            rval = ugly_json
+        if not ugly_json:
+            rval = None
+        else:
+            try:
+                rval = json.dumps(json.loads(ugly_json), indent=4)
+            except json.JSONDecodeError:
+                rval = ugly_json
         return rval
 
     def add_transform(self, key, xslt):

@@ -71,10 +71,12 @@ expected_bad = 'ERROR: Transformer exception: org.xml.sax.SAXParseException; lin
                'The element type "doc" must be terminated by the matching end-tag "</doc>".'
 
 
-class XMLToJsonTextCase(unittest.TestCase):
+class XMLToJsonTestCase(unittest.TestCase):
     # Just a quick test as the actual transform is tested elsewhere.  Our job is just to make sure
     # that we get what we expect through the gateway
     gw = pyjxslt.Gateway()
+    if not gw.gateway_connected(reconnect=False):
+        print("Gateway must be running on port 25333")
 
     def compare_jsons(self, json1, json2):
         json1d = json.loads(json1)
@@ -92,6 +94,13 @@ class XMLToJsonTextCase(unittest.TestCase):
         self.assertTrue(self.compare_jsons(expected_json, self.gw.to_json(xml1)))
         self.assertEqual(expected_bad, self.gw.to_json(bad_xml))
         self.assertTrue(self.compare_jsons(expected_pi, self.gw.to_json(xml_with_processing_instruction)))
+
+
+class NoGatewayTestCase(unittest.TestCase):
+    def test_gw_down(self):
+        gw = pyjxslt.Gateway(port=23456)    # a non-existent port
+        self.assertIsNone(gw.to_json(xml1))
+
 
 if __name__ == '__main__':
     unittest.main()
